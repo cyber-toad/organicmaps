@@ -1387,6 +1387,28 @@ UNIT_CLASS_TEST(Runner, Bookmarks_AutoSave)
   TEST(base::DeleteFileX(fileName2), ());
 }
 
+UNIT_CLASS_TEST(Runner, ExportAll)
+{
+  string const kmlFile1 = GetPlatform().TestsDataPathForFile("gpx_test_data/route.gpx");
+  string const kmlFile2 = GetPlatform().TestsDataPathForFile("gpx_test_data/route.gpx");
+  BookmarkManager bmManager(BM_CALLBACKS);
+  bmManager.EnableTestMode(true);
+
+  BookmarkManager::KMLDataCollection kmlDataCollection;
+  kmlDataCollection.emplace_back(kmlFile1, LoadKmlFile(kmlFile1, KmlFileType::Text));
+  kmlDataCollection.emplace_back(kmlFile2, LoadKmlFile(kmlFile2, KmlFileType::Text));
+
+  bmManager.CreateCategories(std::move(kmlDataCollection));
+  TEST_EQUAL(bmManager.GetBmGroupsIdList().size(), 2, ());
+
+  auto categories = bmManager.GetBmGroupsIdList();
+  bmManager.PrepareFileForSharing(std::move(categories), [](BookmarkManager::SharingResult const & result)
+                                  {
+                                    cout<<result.m_sharingPath;
+                                  });
+}
+
+
 UNIT_CLASS_TEST(Runner, Bookmarks_BrokenFile)
 {
   string const fileName = GetPlatform().TestsDataPathForFile("broken_bookmarks.kmb.test");
