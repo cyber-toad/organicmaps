@@ -29,6 +29,7 @@
 #include <string>
 #include <vector>
 
+#include "routing_manager.hpp"
 
 namespace storage
 {
@@ -435,6 +436,8 @@ public:
   kml::TrackId SaveTrackRecording(std::string trackName);
   std::string GenerateTrackRecordingName() const;
   dp::Color GenerateTrackRecordingColor() const;
+
+  kml::TrackId SaveRoute(RoutingManager & routingManager);
 
 private:
   class MarksChangesTracker : public df::UserMarksProvider

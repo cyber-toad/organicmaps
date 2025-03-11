@@ -1170,6 +1170,16 @@ dp::Color BookmarkManager::GenerateTrackRecordingColor() const
   return kml::ColorFromPredefinedColor(kml::GetRandomPredefinedColor());
 }
 
+kml::TrackId BookmarkManager::SaveRoute(RoutingManager & routingManager)
+{
+  routingManager.SaveRoutePoints()
+}
+
+kml::TrackId SaveRoute(RoutingManager & routingManager)
+{
+  return 0;
+}
+
 void BookmarkManager::PrepareBookmarksAddresses(std::vector<SortBookmarkData> & bookmarksForSort,
                                                 AddressesCollection & newAddresses)
 {
