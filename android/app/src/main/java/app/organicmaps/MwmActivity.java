@@ -2155,6 +2155,12 @@ public class MwmActivity extends BaseMwmFragmentActivity
   }
 
   @Override
+  public void onSaveRoute()
+  {
+    Framework.nativeSaveRoute();
+  }
+
+  @Override
   public void onManageRouteOpen()
   {
     // Create and show 'Manage Route' Bottom Sheet panel.

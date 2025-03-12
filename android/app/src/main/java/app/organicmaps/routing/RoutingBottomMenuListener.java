@@ -6,4 +6,5 @@ public interface RoutingBottomMenuListener
   void onSearchRoutePoint(@RoutePointInfo.RouteMarkType int type);
   void onRoutingStart();
   void onManageRouteOpen();
+  void onSaveRoute();
 }
