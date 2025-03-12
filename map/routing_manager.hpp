@@ -204,7 +204,7 @@ public:
     return m_routingSession.GetTurnNotificationsLocale();
   }
   // @return polyline of the route.
-  routing::FollowedPolyline const & GetRoutePolylineForTests() const
+  routing::FollowedPolyline const & GetRoutePolyline() const
   {
     return m_routingSession.GetRouteForTests()->GetFollowedPolyline();
   }
