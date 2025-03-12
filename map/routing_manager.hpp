@@ -142,6 +142,7 @@ public:
   // This method was added because we do not want to break the behaviour that is familiar to our
   // users.
   bool DisableFollowMode();
+  void SaveRoute();
 
   void SetRouteBuildingListener(RouteBuildingCallback const & buildingCallback)
   {

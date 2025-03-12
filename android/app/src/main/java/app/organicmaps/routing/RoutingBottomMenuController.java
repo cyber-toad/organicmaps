@@ -153,6 +153,9 @@ final class RoutingBottomMenuController implements View.OnClickListener
                                                          res.getDimensionPixelSize(R.dimen.margin_half));
     Button manageRouteButton = altitudeChartFrame.findViewById(R.id.btn__manage_route);
     manageRouteButton.setOnClickListener(this);
+
+    Button saveRouteButton = altitudeChartFrame.findViewById(R.id.save);
+    saveRouteButton.setOnClickListener(this);
   }
 
   void showAltitudeChartAndRoutingDetails()

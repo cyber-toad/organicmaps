@@ -1170,13 +1170,14 @@ dp::Color BookmarkManager::GenerateTrackRecordingColor() const
   return kml::ColorFromPredefinedColor(kml::GetRandomPredefinedColor());
 }
 
-kml::TrackId BookmarkManager::SaveRoute(RoutingManager & routingManager)
+kml::TrackId BookmarkManager::SaveRoute(std::vector<m2::PointD> points)
 {
   kml::MultiGeometry geometry;
   geometry.m_lines.emplace_back();
+  geometry.m_timestamps.emplace_back();
   auto & line = geometry.m_lines.back();
 
-  for (auto const & pt : routingManager.GetRoutePolyline().GetPolyline().GetPoints())
+  for (auto const & pt : points)
     line.emplace_back(mercator::FromLatLon(pt.x, pt.y));
 
   kml::TrackData trackData;

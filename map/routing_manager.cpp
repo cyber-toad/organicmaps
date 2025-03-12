@@ -1089,6 +1089,11 @@ void RoutingManager::SetUserCurrentPosition(m2::PointD const & position)
   }
 }
 
+void RoutingManager::SaveRoute()
+{
+  m_bmManager->SaveRoute(GetRoutePolyline().GetPolyline().GetPoints());
+}
+
 bool RoutingManager::DisableFollowMode()
 {
   bool const disabled = m_routingSession.DisableFollowMode();

@@ -29,8 +29,6 @@
 #include <string>
 #include <vector>
 
-#include "routing_manager.hpp"
-
 namespace storage
 {
 class CountryInfoGetter;
@@ -437,7 +435,7 @@ public:
   std::string GenerateTrackRecordingName() const;
   dp::Color GenerateTrackRecordingColor() const;
 
-  kml::TrackId SaveRoute(RoutingManager & routingManager);
+  kml::TrackId SaveRoute(std::vector<m2::PointD> points);
 
 private:
   class MarksChangesTracker : public df::UserMarksProvider
