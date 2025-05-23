@@ -159,6 +159,9 @@ final class RoutingBottomMenuController implements View.OnClickListener
                                                          res.getDimensionPixelSize(R.dimen.margin_half));
     Button manageRouteButton = altitudeChartFrame.findViewById(R.id.btn__manage_route);
     manageRouteButton.setOnClickListener(this);
+
+    Button saveButton = altitudeChartFrame.findViewById(R.id.btn__save);
+    saveButton.setOnClickListener(this);
   }
 
   void showAltitudeChartAndRoutingDetails()
@@ -169,6 +172,9 @@ final class RoutingBottomMenuController implements View.OnClickListener
       showRouteAltitudeChart();
     showRoutingDetails();
     UiUtils.show(mAltitudeChartFrame);
+    Button saveButton = mAltitudeChartFrame.findViewById(R.id.btn__save);
+    saveButton.setText(R.string.save);
+    saveButton.setEnabled(true);
   }
 
   void hideAltitudeChartAndRoutingDetails()
@@ -496,5 +502,12 @@ final class RoutingBottomMenuController implements View.OnClickListener
     }
     else if (id == R.id.btn__manage_route)
       mListener.onManageRouteOpen();
+    else if (id == R.id.btn__save)
+    {
+      Framework.nativeSaveRoute();
+      Button saveButton = v.findViewById(R.id.btn__save);
+      saveButton.setEnabled(false);
+      saveButton.setText(R.string.saved);
+    }
   }
 }
